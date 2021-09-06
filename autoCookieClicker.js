@@ -19,8 +19,11 @@ autoCookieClicker = setInterval(autoCookieClickerFn, 1)
 
 autoGameLoop = () => {
 	// Look for golden cookies to click
-	if (Game.shimmers.length) {
-		for (let i=0; i<Game.shimmers.length; i++) Game.shimmers[i].l.click();
+	Game.shimmers.filter((s) => !s.wrath).map((s) => s.l.click());
+	
+	// Try to keep wrinklers around a while before popping them
+	if (Game.wrinklers.filter((w) => w.close).length == Game.getWrinklersMax()) {
+		Game.PopRandomWrinkler();
 	}
 	
 	// Check if there is an upgrade available that's safe to auto-buy
