@@ -7,5 +7,8 @@
     "url": "git+https://github.com/MageLuingil/CookieClickerBot.git"
   },
   "author": "Daniel Matthies <dmatthies.dev@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@types/cookieclicker": "^2.44.0"
+  }
 }
