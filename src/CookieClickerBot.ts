@@ -1,5 +1,5 @@
 /**
- * Built for Cookie Clicker version 2.031
+ * Built for Cookie Clicker version 2.043
  * @author Daniel Matthies <dmatthies.dev@gmail.com>
  */
 
@@ -98,6 +98,8 @@ class CookieClickerBot {
 	}
 	
 	doTick() {
+		if (Game.OnAscend) return;
+		
 		const now = Date.now();
 		this.actions.forEach(action => {
 			// Check if this action should try to run this tick
@@ -143,21 +145,21 @@ class CookieClickerBot {
 	 * Click the big cookie
 	 *
 	 * @type Action
-	 * @prop interval 250/sec (internal game rate limit)
+	 * @prop interval 50/sec (internal game rate limit)
 	 */
 	static clickCookie: Action & { noop: () => void, origPlayCookieSound: () => void } = Object.assign(
 		function clickCookie(): ActionResult {
 			// Disable cookie click sound to prevent media fetch errors from fast clicks
 			Game.playCookieClickSound = CookieClickerBot.clickCookie.noop;
-			// I'm just a regular click, I am
-			document.getElementById('bigCookie')?.click();
+			// Directly invoking ClickCookie bypasses artificial click event detection
+			Game.ClickCookie();
 			// Restore cookie click sound
 			Game.playCookieClickSound = CookieClickerBot.clickCookie.origPlayCookieSound;
 			
 			return { success: true, result: undefined };
 		},
 		{
-			interval: 1000 / 250, // Obey the autoclick detector
+			interval: 1000 / 50, // Obey the autoclick detector
 			noop: () => {},
 			origPlayCookieSound: Game.playCookieClickSound
 		}

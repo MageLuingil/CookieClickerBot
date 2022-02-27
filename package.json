@@ -1,14 +1,19 @@
 {
   "name": "cookieclickerbot",
-  "version": "1.0.0",
+  "version": "1.1.0+2.043",
   "description": "Auto Cookie Clicker",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MageLuingil/CookieClickerBot.git"
   },
+  "scripts": {
+    "build": "tsc -p ./tsconfig.json; build/generateModInfo.js > js/info.txt"
+  },
   "author": "Daniel Matthies <dmatthies.dev@gmail.com>",
   "license": "MIT",
-  "dependencies": {
-    "@types/cookieclicker": "^2.44.0"
+  "devDependencies": {
+    "@types/cookieclicker": "^2.44.0",
+    "semver": "^7.3.5",
+    "typescript": "^4.5.5"
   }
 }

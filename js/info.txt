@@ -1,0 +1,11 @@
+{
+	"Name": "Cookie Clicker Bot",
+	"ID": "mageluingil cookie clicker bot",
+	"Author": "MageLuingil",
+	"Description": "Clicks the big cookie, and other things!",
+	"ModVersion": 1.1,
+	"GameVersion": 2.043,
+	"Date": "27/02/2022",
+	"Dependencies": [],
+	"Disabled": 1
+}
